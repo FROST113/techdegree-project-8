@@ -2,10 +2,9 @@
 let employees = [];
 const apiUrl = 'https://randomuser.me/api/?results=12&inc=name,picture,email,location,phone,dob&noinfo&nat=US';
 const container = document.querySelector('.grid');
-const overlay = document.querySelector('.hidden-overlay');
-const modalContainer = document.querySelector('.content-modal');
-const modalClose = document.querySelector('.close-modal');
-
+const overlay = document.querySelector('.bg-modal');
+const modalContainer = document.querySelector('.modal-content');
+const modalClose = document.querySelector('.modal-close');
 
 
 // fetch employee information from API //
@@ -16,7 +15,7 @@ fetch(apiUrl)
   .catch(err => console.log(err))
   
 
-// Function to display 
+// Function to display basic employee info
   function displayEmployees(employeeInfo) {
         employees = employeeInfo;
         let employeeHTML = "";
@@ -39,4 +38,65 @@ fetch(apiUrl)
     });
         container.innerHTML = employeeHTML;
   };
+  
+  function displayModal(index) {
+    let {name, dob, phone, email, location: { city, street, state, postcode}, picture} = employees[index];
+  
+    let date = new Date(dob.date);
+  
+    const modalHTML = `
+    <img class="avatar-modal" src="${picture.large}" alt=""/>
+    <div class="modal-info">
+      <h2 class="name-modal"> ${name.first} ${name.last}</h2>
+      <p class="email-modal">${email}</p>
+      <p class="address-modal">${city}</p>
+      <hr />
+      <p>${phone}</p>
+      <p class="address-modal">${street}, ${state} ${postcode}</p>
+      <p class="birthday">Birthday:
+      ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+    </div>
+    `;
+  
+    overlay.classList.remove('hidden');
+    modalContainer.innerHTML = modalHTML;
+  }
 
+  // event listener for opening the modal //
+
+container.addEventListener('click', e => {
+
+  if (e.target !== container) {
+    const card = e.target.closest(".card");
+    const index = card.getAttribute('data-index');
+    overlay.style.display = 'flex';
+    displayModal(index);
+  }
+});
+
+// event listener for closing the modal //
+
+document.addEventListener('click', (e) => {
+  if (e.target.className == 'overlay' || e.target.className == 'modal-close') {
+    overlay.classList.add('hidden');
+    overlay.style.display = 'none';
+  }
+});
+
+document.addEventListener('keydown', (e) =>{
+  if (e.key === "Escape") {
+    overlay.classList.add('hidden')
+    overlay.style.display = 'none';
+  }
+});
+  
+  // container.addEventListener('click', function() {
+  //   overlay.style.display = 'flex';
+  // });
+
+  // modalClose.addEventListener('click', function() {
+  //   overlay.style.display = 'none';
+  // });
+
+
+ 
