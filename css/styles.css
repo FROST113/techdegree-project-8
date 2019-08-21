@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Base styles */
+
+h3 {
+    text-align: center;
+}
+
+.card {
+    border: solid gray 1px;
+    max-width: 90%;
+    
+    
+    
+}
