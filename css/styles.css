@@ -69,21 +69,69 @@ h2.name {
 
 
 .modal-content {
-    width: 500px;
-    height: 300px;
+    width: 350px;
+    height: 450px;
     background-color: white;
-    border-radius: 4px;
-    /* position: relative; */
+    border-radius: 10px;
+    position: relative;
 }
 
 .modal-close {
-    /* position: absolute; */
-    top: 0;
-    right: 14px;
+    position: absolute;
+    top: 3px;
+    right: 15px;
+    z-index: 2;
     font-size: 32px;
     transform: rotate(45deg);
     cursor: pointer;
 }
+
+.avatar-modal {
+    border-radius: 50%;
+    margin-left: 99px;
+    margin-top: 20px;
+    width: 170px;
+}
+
+.modal-info {
+    text-align: center;
+}
+
+.name-modal {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.email-modal {
+    margin-bottom: 10px;
+}
+
+.address-modal-city {
+    margin-bottom: 25px;
+    border-bottom: solid lightgrey 2px;
+    padding-bottom: 20px;
+}
+
+.tel {
+    margin-bottom: 10px;
+}
+
+.address-modal {
+    margin-bottom: 10px;
+}
+
+@media(min-width: 411px) {
+    .modal-close {
+        position: absolute;
+        top: 3px;
+        right: 15px;
+        z-index: 2;
+        font-size: 32px;
+        transform: rotate(45deg);
+        cursor: pointer;
+    }  
+}
+
 
 /* Tablet layout at 768px*/
 
@@ -108,10 +156,32 @@ h2.name {
     }
     .email,
     .address {
-        font-size: 10px;
+        font-size: 12px;
     }
     .name {
         font-size: 18px;
+    }
+    .modal-content {
+        width: 400px;
+        height: 450px;
+        background-color: white;
+        border-radius: 10px;
+        position: relative;
+    }
+    .modal-close {
+        position: absolute;
+        top: 3px;
+        right: 15px;
+        z-index: 2;
+        font-size: 32px;
+        transform: rotate(45deg);
+        cursor: pointer;
+    }
+    .avatar-modal {
+        border-radius: 50%;
+        margin-left: 121px;
+        margin-top: 20px;
+        width: 170px;
     }
 }
 
@@ -132,9 +202,33 @@ h2.name {
     }
     .email,
     .address {
-        font-size: 10px;
+        font-size: 12px;
     }
     .name {
         font-size: 20px;
-    }   
+    } 
+    .modal-content {
+        width: 400px;
+        height: 450px;
+        background-color: white;
+        border-radius: 10px;
+        position: relative;
+    }
+    .modal-close {
+        position: absolute;
+        top: 3px;
+        right: 15px;
+        z-index: 2;
+        font-size: 32px;
+        transform: rotate(45deg);
+        cursor: pointer;
+    }
+    .avatar-modal {
+        border-radius: 50%;
+        margin-left: 121px;
+        margin-top: 20px;
+        width: 170px;
+    }
+   
 }
+

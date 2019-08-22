@@ -39,30 +39,9 @@ fetch(apiUrl)
         container.innerHTML = employeeHTML;
   };
   
-  function displayModal(index) {
-    let {name, dob, phone, email, location: { city, street, state, postcode}, picture} = employees[index];
-  
-    let date = new Date(dob.date);
-  
-    const modalHTML = `
-    <img class="avatar-modal" src="${picture.large}" alt=""/>
-    <div class="modal-info">
-      <h2 class="name-modal"> ${name.first} ${name.last}</h2>
-      <p class="email-modal">${email}</p>
-      <p class="address-modal">${city}</p>
-      <hr />
-      <p>${phone}</p>
-      <p class="address-modal">${street}, ${state} ${postcode}</p>
-      <p class="birthday">Birthday:
-      ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
-    </div>
-    `;
-  
-    overlay.classList.remove('hidden');
-    modalContainer.innerHTML = modalHTML;
-  }
+ 
 
-  // event listener for opening the modal //
+  // Event listener to open modal//
 
 container.addEventListener('click', e => {
 
@@ -74,7 +53,7 @@ container.addEventListener('click', e => {
   }
 });
 
-// event listener for closing the modal //
+// Event listener to close modal //
 
 document.addEventListener('click', (e) => {
   if (e.target.className == 'overlay' || e.target.className == 'modal-close') {
@@ -90,13 +69,29 @@ document.addEventListener('keydown', (e) =>{
   }
 });
   
-  // container.addEventListener('click', function() {
-  //   overlay.style.display = 'flex';
-  // });
 
-  // modalClose.addEventListener('click', function() {
-  //   overlay.style.display = 'none';
-  // });
+ //Function to display extra info in a modal //
+ function displayModal(index) {
+  let {name, dob, phone, email, location: { city, street, state, postcode}, picture} = employees[index];
 
+  let date = new Date(dob.date);
 
+  const modalHTML = `
+  <span class="modal-close">+</span>
+  <img class="avatar-modal" src="${picture.large}" alt=""/>
+  <div class="modal-info">
+    <h2 class="name-modal"> ${name.first} ${name.last}</h2>
+    <p class="email-modal">${email}</p>
+    <p class="address-modal-city">${city}</p>
+    
+    <p class="tel">${phone}</p>
+    <p class="address-modal">${street}, ${state} ${postcode}</p>
+    <p class="birthday">Birthday:
+    ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+  </div>
+  `;
+
+  overlay.classList.remove('hidden');
+  modalContainer.innerHTML = modalHTML;
+}
  
